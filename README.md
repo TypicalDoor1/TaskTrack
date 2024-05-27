@@ -7,5 +7,4 @@
 2. Productivity
 3. Whatever your want!
 
-
 [logo]: main/public/favicon.jpg "Hover me!"
