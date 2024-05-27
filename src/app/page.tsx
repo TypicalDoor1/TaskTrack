@@ -6,7 +6,8 @@ export default function Home() {
     <div>
       <Navbar/>
       <main>
-        <h1 className="text-4xl font-bold">Welcome to Next.js!</h1>
+        <link rel="icon" href="public/favicon.jpg" />
+        <h1 className="text-4xl font-bold">TaskTrack - Your productivity based calender app</h1>
         {/* Other content */}
       </main>
     </div>
