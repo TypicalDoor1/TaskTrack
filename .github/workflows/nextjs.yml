@@ -16,10 +16,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: List files for debugging
+        run: ls -la
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '16' # Specify the Node.js version
 
       - name: Determine package manager
         id: determine-package-manager
@@ -40,14 +43,13 @@ jobs:
       - name: Install dependencies
         run: ${{ env.runner }} ${{ env.command }}
 
+      - name: Print npm debug log if exists
+        if: failure()
+        run: cat /home/runner/.npm/_logs/*.log
+
       - name: Run build
         run: ${{ env.runner }} build
 
       - name: Run tests
         run: ${{ env.runner }} test
-
-      - name: Example step using PAT
-        env:
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-        run: |
-          curl -H "Authorization: token $PAT_TOKEN" https://api.github.com/user/repos
+Explanation
